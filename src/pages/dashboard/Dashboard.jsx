@@ -3,19 +3,13 @@ import { useSelector } from "react-redux";
 import { getAllResumeData } from "@/Services/resumeAPI";
 import AddResume from "./components/AddResume";
 import ResumeCard from "./components/ResumeCard";
-import { loginUser } from "@/Services/login";
 
 function Dashboard() {
   const user = useSelector((state) => state.editUser.userData);
   const [resumeList, setResumeList] = React.useState([]);
-  const data = {
-    email: "ramrajmbu@gmail.com",
-    password: "12345678",
-  };
 
   const fetchAllResumeData = async () => {
     try {
-      const user = await loginUser(data);
       const resumes = await getAllResumeData();
       console.log(
         `Printing from DashBoard List of Resumes got from Backend`,
